@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>BAI TAP JS-B5</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<!-- CSS -->
+<link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+ <div class="container">
+    <div >
+        <h1>QUẢN LÝ TUYỂN SINH</h1>
+        <div class="row mt-4 ">
+            <div class="col-4 mt-2">
+                <h3>Điểm chuẩn</h3>
+                <input id="diemChuan" class="form-control">
+            </div>
+            <div class="col-4 mt-2">
+                <h3>Khu vực</h3>
+                <select id="khuVuc" class="form-control">
+                    <option value="2">khu vực A</option>
+                    <option value="1">khu vực B</option>
+                    <option value="0.5">khu vực C</option>
+                </select>
+            </div>
+            <div class="col-4 mt-2" >
+                <h3>Đối tượng</h3>
+                <select id="doiTuong" class="form-control">
+                    <option value="2.5">Đối tượng 1</option>
+                    <option value="1.5">Đối tượng 2</option>
+                    <option value="1">Đối tượng 3</option>
+                </select>
+            </div> 
+            <div class="col-4 mt-2">
+                <h3>Điểm môn A</h3>
+                <input id="diemMonA" class="form-control">
+            </div>
+            <div class="col-4 mt-2">
+                <h3>Điểm môn B</h3>
+                <input id="diemMonB" class="form-control">
+            </div>
+            <div class="col-4 mt-2">
+                <h3>Điểm môn C</h3>
+                <input id="diemMonC" class="form-control">
+            </div>
+        </div>
+        <button id="btnKetQua" class="bg bg-success mt-2 mb-2 rounded text-light" onclick="xuLyKetQuaTuyenSinh()">Kết quả</button>
+        <div>
+            <p  class="alert alert-success">
+                <span id="ketQuaTuyenSinh" ></span>
+            </p>
+        </div>
+    </div>
+    <div>
+        <h1>TÍNH TIỀN ĐIỆN</h1>
+        <div class="row mt-4">
+            <div class="col-4 mt-2">
+                <h3>Tên người dùng</h3>
+                <input id="tenNguoiDung" class="form-control" placeholder='Nhập họ tên' type="text">
+            </div>
+            <div class="col-4 mt-2">
+                <h3>Số kW</h3>
+                <input id="soKw" class="form-control" placeholder = 'Nhập số kW'>
+            </div>
+            <div class="col-4 mt-2 pt-4">
+                <button id="btnTienDien" class="btn btn-success p-3" onclick="tinhTienDien()">Nhấn vào đây</button>
+            </div>
+            <div class="mt-3">
+                <p  class="alert alert-success">
+                    <span id="tienDien" ></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1>TÍNH THUẾ THU NHẬP CÁ NHÂN</h1>
+        <div class="row mt-4">
+            <div class="col-4 mt-2">
+                <h3>Tên người dùng</h3>
+                <input id="tenNguoiDungThue" class="form-control" placeholder='Nhập họ tên' type="text">
+            </div>
+            <div class="col-4 mt-2">
+                <h3>Tổng thu nhập năm</h3>
+                <input id="tongThuNhapNam" class="form-control" placeholder = 'Nhập số tiền'>
+            </div>
+            <div class="col-4 mt-2">
+                <h3>Số người phụ thuộc</h3>
+                <input id="soNguoiPhuThuoc" class="form-control" placeholder = 'Nhập số người'>
+            </div>
+            <div class="col-4 mt-2 pt-4">
+                <button id="btnTienThue" class="btn btn-success" onclick="tinhTienThue()">Nhấn vào đây</button>
+            </div>
+            <div class="mt-3">
+                <p  class="alert alert-success">
+                    <span id="tienThue" ></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1>TÍNH TIỀN CÁP</h1>
+        <!-- input: mã khách hàng, loại khách hàng,số kênh cao cấp, số kết nối -->
+        <div class="row mt-4">
+            <div class="col-4 mt-2">
+                <h3>Mã khách hàng</h3>
+                <input id="maKhachHang" class="form-control" placeholder='Nhập mã' type="text">
+            </div>
+            <div class="col-4 mt-2">
+                <h3>Loại khách hàng</h3>
+                <select id="loaiKhachHang" class="form-control">
+                    <option id="chonLoaiKhachHang" value="chonLoaiKhachHang" >Chọn loại khách hàng</option>
+                    <option id="nhaDan" value="nhaDan" >Nhà dân</option>
+                    <option id="doanhNghiep" value="doanhNghiep" >Doanh nghiệp</option>
+                </select>
+            </div>
+            <div class="col-4 mt-2">
+                <h3>Số kênh cao cấp</h3>
+                <input id="soKenhCaoCap" class="form-control" placeholder = 'Nhập số kênh cao cấp'>
+            </div>
+            <div class="col-4 mt-2" id="divSoKetNoi">
+                <h3>Số kết nối</h3>
+                <input id="soKetNoi" class="form-control" placeholder = 'Nhập số kết nối'>
+            </div>
+            <div class=" mt-2 pt-4">
+                <button id="btnTienCap" class="btn btn-success" onclick="tinhTienCap()">Nhấn vào đây</button>
+            </div>
+            <div class="mt-3">
+                <p  class="alert alert-success">
+                    <span id="tienCap" ></span>
+                </p>
+            </div>
+        </div>
+    </div>
+ </div>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+ <script src="./js/index.js"></script>
+</body>
+
+</html>
